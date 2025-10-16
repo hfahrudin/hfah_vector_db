@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import PlainTextResponse
 from dotenv import load_dotenv
 from core import VectorDB
+from schemas import *
 
 load_dotenv()
 
@@ -24,15 +25,16 @@ app.add_middleware(
 def read_root():
     return PlainTextResponse(content="Healthy", status_code=200)
 
+@app.post("/invoke", response_model=InvokeResponse)
+def invoke(request: InvokeRequest):
+    response = vector_db.invoke(request) 
+    return response
 
-@app.post("/invoke")
-def invoke():
-    return PlainTextResponse(content="Invoke endpoint is healthy", status_code=200)
+@app.post("/add", response_model=AddResponse)
+def add(request: AddRequest):
+    response = vector_db.add_data(request) 
+    return response
 
-@app.post("/add")
-def add():
-    return PlainTextResponse(content="Add endpoint is healthy", status_code=200)
-
-@app.post("/delete")
-def delete():
-    return PlainTextResponse(content="Delete endpoint is healthy", status_code=200)
+# @app.post("/delete")
+# def delete():
+#     return PlainTextResponse(content="Delete endpoint is healthy", status_code=200)
