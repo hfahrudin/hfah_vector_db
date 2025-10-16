@@ -6,6 +6,7 @@ from schemas import *
 
 class VectorDB:
     def __init__(self, folder_path: str = "data", vector_file: str = "vectors.npy", meta_file: str = "metadata.json"):
+        """Init Vector."""
         self.folder_path = folder_path
 
         # Ensure folder exists
@@ -31,7 +32,6 @@ class VectorDB:
         if os.path.exists(self.vector_path):
             return np.load(self.vector_path)
         else:
-            # Create empty array with shape (0, vector_dim)
             empty_vectors = np.zeros((0, self.vector_dim))
             np.save(self.vector_path, empty_vectors)
             return empty_vectors
@@ -77,7 +77,7 @@ class VectorDB:
         top_k = request.top_k
 
         query_embedding = self.model.encode([query], convert_to_numpy=True)[0]
-        scores = self._cosine_sim(query_embedding)
+        scores = self._cosine_sim_scratch(query_embedding)
 
         top_k = min(top_k, len(scores))
         top_indices = np.argsort(scores)[::-1][:top_k]
@@ -92,13 +92,10 @@ class VectorDB:
 
         return InvokeResponse(results=results)
     
-
+    #for references
     def _cosine_sim(self, query_embedding: np.ndarray) -> np.ndarray:
         """
         Compute cosine similarity between a query embedding and all stored vectors.
-        
-        Returns:
-            scores: np.ndarray of shape (num_vectors,), higher means more similar.
         """
         if self.vectors.shape[0] == 0:
             return np.array([])
@@ -112,4 +109,26 @@ class VectorDB:
         return scores
     
     def _cosine_sim_scratch(self, query_embedding: np.ndarray) -> np.ndarray:
-        pass
+        """
+        Compute cosine similarity between a query embedding and all stored vectors from scratch.
+        Uses only basic NumPy operations.
+        """
+        if self.vectors.shape[0] == 0:
+            return np.array([])
+
+        scores = []
+        for vec in self.vectors:
+            # Dot product: sum of element-wise multiplication
+            dot = np.sum(vec * query_embedding)
+
+            # Norms: sqrt of sum of squares
+            vec_norm = np.sqrt(np.sum(vec * vec))
+            query_norm = np.sqrt(np.sum(query_embedding * query_embedding))
+
+            # Avoid division by zero
+            if vec_norm == 0 or query_norm == 0:
+                scores.append(0.0)
+            else:
+                scores.append(dot / (vec_norm * query_norm))
+
+        return np.array(scores)
