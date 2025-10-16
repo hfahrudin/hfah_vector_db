@@ -1,0 +1,52 @@
+[
+  {
+    "text": "The quick brown fox jumps over the lazy dog, demonstrating agility and cleverness in a playful forest scenario.",
+    "label": "article",
+    "source": "blog"
+  },
+  {
+    "text": "Artificial intelligence and machine learning are transforming industries worldwide, enabling faster decision-making and automation of complex tasks.",
+    "label": "tech",
+    "source": "tv"
+  },
+  {
+    "text": "FastAPI is a modern, fast, and intuitive web framework for building APIs with Python. It supports async programming, automatic OpenAPI docs, and type-safe request validation.",
+    "label": "tech",
+    "source": "blog"
+  },
+  {
+    "text": "Renewable energy sources like solar, wind, and hydropower are crucial for reducing carbon emissions and combating climate change effectively.",
+    "label": "article",
+    "source": "blog"
+  },
+  {
+    "text": "The Mars rover has sent back remarkable images and scientific data, helping humanity understand the Red Planet’s geology and potential for life.",
+    "label": "article",
+    "source": "news"
+  },
+  {
+    "text": "Meditation and mindfulness practices have been shown to improve mental health, reduce stress, and increase overall emotional well-being over time.",
+    "label": "health",
+    "source": "news"
+  },
+  {
+    "text": "Quantum computing promises to solve complex problems beyond the capabilities of classical computers, using the principles of superposition and entanglement.",
+    "label": "tech",
+    "source": "blog"
+  },
+  {
+    "text": "Traveling opens up opportunities to experience new cultures, meet diverse people, and gain unique perspectives on the world.",
+    "label": "health",
+    "source": "blog"
+  },
+  {
+    "text": "Learning multiple programming languages can expand a developer’s toolkit, making it easier to choose the best language for a given project or problem.",
+    "label": "dev",
+    "source": "news"
+  },
+  {
+    "text": "Historic monuments and museums provide valuable insights into the past, helping people understand different cultures, traditions, and historical events.",
+    "label": "article",
+    "source": "news"
+  }
+]

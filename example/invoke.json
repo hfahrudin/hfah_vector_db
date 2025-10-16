@@ -1,0 +1,42 @@
+[
+  {
+    "query": "Tell me about artificial intelligence and machine learning.",
+    "top_k": 3
+  },
+  {
+    "query": "What are some benefits of meditation and mindfulness practices?",
+    "top_k": 2
+  },
+  {
+    "query": "Information about FastAPI framework for building APIs in Python.",
+    "top_k": 4
+  },
+  {
+    "query": "How does quantum computing work and why is it important?",
+    "top_k": 3
+  },
+  {
+    "query": "Explain renewable energy sources like solar, wind, and hydropower.",
+    "top_k": 3
+  },
+  {
+    "query": "What discoveries has the Mars rover made on the Red Planet?",
+    "top_k": 3
+  },
+  {
+    "query": "Tips for learning multiple programming languages effectively.",
+    "top_k": 2
+  },
+  {
+    "query": "How can traveling help people experience new cultures and perspectives?",
+    "top_k": 3
+  },
+  {
+    "query": "Why are historic monuments and museums important for education?",
+    "top_k": 3
+  },
+  {
+    "query": "What are the latest trends in artificial intelligence research?",
+    "top_k": 5
+  }
+]
