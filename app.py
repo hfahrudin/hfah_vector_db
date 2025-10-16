@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import PlainTextResponse
+from fastapi.responses import PlainTextResponse, JSONResponse
 from dotenv import load_dotenv
 from core import VectorDB
 from schemas import *
@@ -34,6 +34,14 @@ def invoke(request: InvokeRequest):
 def add(request: AddRequest):
     response = vector_db.add_data(request) 
     return response
+
+@app.get("/all")
+def all():
+    all_data = {
+        "vectors": vector_db.vectors.tolist(),
+        "metadata": vector_db.metadata
+    }
+    return JSONResponse(content=all_data)
 
 # @app.post("/delete")
 # def delete():
