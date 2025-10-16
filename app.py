@@ -2,9 +2,11 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import PlainTextResponse
 from dotenv import load_dotenv
+from core import VectorDB
 
 load_dotenv()
 
+vector_db = VectorDB()
 # Initialize FastAPI app
 app = FastAPI(title="HFAH Vector DB",redirect_slashes=False)
 
